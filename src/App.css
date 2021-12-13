@@ -37,6 +37,8 @@
 .inputs {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-input {
@@ -47,9 +49,26 @@
   margin: 0.7em;
   background-color: black;
   color: white;
+  font-weight: 800;
   border-radius: 0.25rem;
 }
 
 ::-webkit-input-placeholder {
   color: #d1d3d4;
+}
+
+.enter-button {
+  font-family: "Orbitron";
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 0.15rem;
+  padding: 0.5em;
+  width: 250px;
+  border-radius: 0.25rem;
+  background-color: #eb1c24;
+  color: #ffffff;
+}
+.enter-button:hover {
+  background-color: #d1d3d4;
+  color: #414042;
 }
