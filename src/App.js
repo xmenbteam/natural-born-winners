@@ -1,11 +1,12 @@
 import "./App.css";
+import Login from "./components/Login";
+import NCLogoRed from "./assets/NCLogoRed.png";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>HALLOOOO</h1>
-      </header>
+      <img className="main-logo" src={NCLogoRed} alt="RED LOGO THERE PAL" />
+      <Login />
     </div>
   );
 }
