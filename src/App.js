@@ -1,22 +1,27 @@
-import "./App.css"
-import Login from "./components/Login"
-import NCLogoRed from "./assets/NCLogoRed.png"
-import { BrowserRouter } from "react-router-dom"
-import { Routes, Route, Link } from "react-router-dom"
+import "./App.css";
+import { useReducer } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+
+import Login from "./components/Login";
+import IntroPage from "./components/IntroPage";
+import { AppContext, redFunc, initialState } from "./AppContext";
 
 function App() {
+  const [state, dispatch] = useReducer(redFunc, initialState);
+
   return (
-    <BrowserRouter>
-      <div className="App">
-        <img className="main-logo" src={NCLogoRed} alt="RED LOGO THERE PAL" />
-        <Login />
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/intro" element={<IntroPage />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
-  )
+    <AppContext.Provider value={{ state, dispatch }}>
+      <BrowserRouter>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/intro" element={<IntroPage />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </AppContext.Provider>
+  );
 }
 
-export default App
+export default App;

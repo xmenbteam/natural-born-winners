@@ -1,60 +1,81 @@
-import React, { useState } from "react"
-import { collection, addDoc } from "firebase/firestore"
-import db from "../firebase/firebase"
+import React, { useState, useContext } from "react";
+import { AppContext } from "../AppContext";
+import { collection, addDoc } from "firebase/firestore";
+import db from "../firebase/firebase";
+import { Link, useNavigate } from "react-router-dom";
+
+import NCLogoRed from "../assets/NCLogoRed.png";
 
 const Login = () => {
-  const [username, setUsername] = useState("")
-  const [company, setCompany] = useState("")
-  const [email, setEmail] = useState("")
+  const [localUsername, setLocalUsername] = useState("");
+  const [localCompany, setLocalCompany] = useState("");
+  const [localEmail, setLocalEmail] = useState("");
+
+  const { dispatch } = useContext(AppContext);
+
+  let navigate = useNavigate();
 
   return (
-    <form className="inputs">
-      <input
-        name="username"
-        placeholder="Username"
-        className="form-input"
-        onChange={(event) => {
-          setUsername(event.target.value)
-        }}
-        value={username}
-      />
-      <input
-        name="company"
-        placeholder="Company"
-        className="form-input"
-        onChange={(event) => {
-          setCompany(event.target.value)
-        }}
-        value={company}
-      />
-      <input
-        name="email"
-        placeholder="Email"
-        className="form-input"
-        onChange={(event) => {
-          setEmail(event.target.value)
-        }}
-        value={email}
-      />
-      <button
-        onClick={async (event) => {
-          event.preventDefault()
-          await addDoc(collection(db, "users"), {
-            username: username,
-            company: company,
-            email: email,
-            startTime: Date.now(),
-          })
-          setUsername("")
-          setCompany("")
-          setEmail("")
-        }}
-        className="enter-button"
-      >
-        Begin
-      </button>
-    </form>
-  )
-}
+    <>
+      <img className="main-logo" src={NCLogoRed} alt="RED LOGO THERE PAL" />
+      <form className="inputs">
+        <input
+          name="username"
+          placeholder="Username"
+          className="form-input"
+          onChange={(event) => {
+            setLocalUsername(event.target.value);
+          }}
+          value={localUsername}
+        />
+        <input
+          name="company"
+          placeholder="Company"
+          className="form-input"
+          onChange={(event) => {
+            setLocalCompany(event.target.value);
+          }}
+          value={localCompany}
+        />
+        <input
+          name="email"
+          placeholder="Email"
+          className="form-input"
+          onChange={(event) => {
+            setLocalEmail(event.target.value);
+          }}
+          value={localEmail}
+        />
+        <Link to="/intro">
+          <button
+            type="submit"
+            onClick={async (event) => {
+              event.preventDefault();
+              await addDoc(collection(db, "users"), {
+                username: localUsername,
+                company: localCompany,
+                email: localEmail,
+                startTime: Date.now(),
+              });
+              dispatch({
+                type: "submit",
+                value: {
+                  username: localUsername,
+                  company: localCompany,
+                  email: localEmail,
+                  startTime: Date.now(),
+                },
+              });
+              navigate("/intro");
+            }}
+            className="enter-button"
+          >
+            Begin
+          </button>
+        </Link>
+      </form>
+    </>
+  );
+};
 
-export default Login
+export default Login;
