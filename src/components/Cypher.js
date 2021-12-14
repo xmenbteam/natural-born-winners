@@ -74,7 +74,10 @@ function Cypher({ phraseToGuess }) {
 
   return (
     <div>
-      <h2>{cypher(phraseToGuess)}</h2>
+      <h1>Decode the this message... {cypher(phraseToGuess)}</h1>
+      <h2>Drag your chosen answer to the blank square below</h2>
+      <br></br>
+      <br></br>
 
       {success && (
         <h3>Well done!</h3>
