@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import {Link} from 'react-router-dom' 
-import { AppContext } from "../AppContext";
+import { useContext } from "react"
+import { Link } from "react-router-dom"
+import { AppContext } from "../AppContext"
 
 import Welcome from "./Welcome"
+import StageButton from "./StageButton"
 
-import pixelComputer from "../assets/pixelComp.png";
-
+import pixelComputer from "../assets/pixelComp.png"
 
 const Console = () => {
   const { state } = useContext(AppContext)
@@ -25,7 +25,14 @@ const Console = () => {
           <div className="type-section">
             <Welcome />
           </div>
-          <div className="button-section"></div>
+          <div className="button-section">
+            <StageButton taskNum="1" />
+            <StageButton taskNum="2" />
+            <StageButton taskNum="3" />
+            <button type="submit" className="test-button">
+              Test
+            </button>
+          </div>
         </div>
 
         {/* <Link to='/cypher'>Start Task 2</Link> */}
