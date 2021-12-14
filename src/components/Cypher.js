@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useDrag, useDrop } from "react-dnd";
 import cypher from '../utils/cypher';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 function Card({ text, index, setCurrentDrag }) {
   const [{ isDragging }, dragRef] = useDrag(() => {
@@ -74,6 +76,7 @@ function Cypher({ phraseToGuess }) {
 
   return (
     <div>
+    <DndProvider backend={HTML5Backend}>
       <h1>Decode the this message... {cypher(phraseToGuess)}</h1>
       <h2>Drag your chosen answer to the blank square below</h2>
       <br></br>
@@ -104,8 +107,9 @@ function Cypher({ phraseToGuess }) {
           />
         ))}
       </section>
-
+      </DndProvider>
     </div>
+
   );
 }
 
