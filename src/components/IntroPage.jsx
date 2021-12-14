@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../AppContext";
 import pixelComputer from "../assets/pixelComp.png";
+import {Link} from 'react-router-dom' 
 
 const IntroPage = () => {
   const { state } = useContext(AppContext);
@@ -26,6 +27,7 @@ const IntroPage = () => {
             progress!
           </p>
         </div>
+        <Link to='/cypher'>Start Challenge</Link>
       </div>
     </div>
   );
