@@ -14,5 +14,3 @@ export default function cypher(str) {
   }
   return resultStr.join("");
 };
-
-console.log(cypher("SERR CVMMN!"));

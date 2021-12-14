@@ -43,9 +43,16 @@
   margin: 20px;
 }
 
+.boxes {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+  align-items: center;
+}
+
 .box {
-  width: 300px;
-  height: 300px;
+  width: 12rem;
+  height: 12rem;
   display: flex;
   justify-content: center;
   align-items: center;
