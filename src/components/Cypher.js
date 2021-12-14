@@ -21,7 +21,7 @@ function Card({ text, index, setCurrentDrag }) {
       className="card"
       ref={dragRef}
       style={{
-        backgroundColor: isDragging ? "#fbb" : "palegoldenrod",
+        backgroundColor: isDragging ? "#fbb" : "rgba(0, 0, 0, 0.12)",
       }}
       onClick={() => setCurrentDrag(index)}
     >
@@ -43,7 +43,7 @@ function Box({ card, moveCard, phrase, setCurrentDrag  }) {
     <div
       className="box"
       ref={dropRef}
-      style={{ backgroundColor: isOver ? "#bbf" : "rgba(0,0,0,.12" }}
+      style={{ backgroundColor: isOver ? "#eb1c24" : "rgba(0, 0, 0, 0.24)" }}
     >
       {card ? <Card text={phrase} index={card} setCurrentDrag={setCurrentDrag} /> : ""}
     </div>
