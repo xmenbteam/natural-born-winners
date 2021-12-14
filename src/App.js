@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 
 import Login from "./components/Login";
-import IntroPage from "./components/IntroPage";
+import Console from "./components/Console";
 import { AppContext, redFunc, initialState } from "./AppContext";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <div className="App">
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/intro" element={<IntroPage />} />
+            <Route path="/intro" element={<Console />} />
             <Route path='/cypher' element={ <Cypher phraseToGuess="HOWDY!" />}/>
           </Routes>
         </div>

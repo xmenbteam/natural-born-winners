@@ -7,7 +7,7 @@ import Welcome from "./Welcome"
 import pixelComputer from "../assets/pixelComp.png";
 
 
-const IntroPage = () => {
+const Console = () => {
   const { state } = useContext(AppContext)
   const { username } = state
 
@@ -27,10 +27,11 @@ const IntroPage = () => {
           </div>
           <div className="button-section"></div>
         </div>
-        <Link to='/cypher'>Start Challenge</Link>
+
+        <Link to='/cypher'>Start Task 2</Link>
       </div>
     </div>
   )
 }
 
-export default IntroPage
+export default Console
