@@ -3,6 +3,8 @@ import { collection, addDoc } from "firebase/firestore"
 import db from "../firebase/firebase"
 
 const Login = () => {
+  console.log("willie")
+
   const [username, setUsername] = useState("")
   const [company, setCompany] = useState("")
   const [email, setEmail] = useState("")
