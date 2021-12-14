@@ -178,3 +178,8 @@ h2 {
 h3 {
   font-family: "Orbitron";
 }
+
+.stage-light {
+  width: 100px;
+  border-radius: 50%;
+}

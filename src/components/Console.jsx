@@ -28,7 +28,7 @@ const Console = () => {
           <div className="button-section"></div>
         </div>
 
-        <Link to='/cypher'>Start Task 2</Link>
+        {/* <Link to='/cypher'>Start Task 2</Link> */}
       </div>
     </div>
   )
