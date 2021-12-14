@@ -1,11 +1,15 @@
 import { useContext } from "react";
-import { AppContext } from "../AppContext";
-import pixelComputer from "../assets/pixelComp.png";
 import {Link} from 'react-router-dom' 
+import { AppContext } from "../AppContext";
+
+import Welcome from "./Welcome"
+
+import pixelComputer from "../assets/pixelComp.png";
+
 
 const IntroPage = () => {
-  const { state } = useContext(AppContext);
-  const { username } = state;
+  const { state } = useContext(AppContext)
+  const { username } = state
 
   return (
     <div className="content-wrapper">
@@ -18,19 +22,15 @@ const IntroPage = () => {
           <img src={pixelComputer} alt="Pixellated computer" />
         </div>
         <div className="instructions-content">
-          <p className="intro-span">
-            Hello and welcome to the NC codebreaker challenge! Ahead of you are
-            three tasks, designed to see how you aspanproach cognitive problems!
-            Task 1 - Unlock the right safe! Task 2 - Use the code cheat sheet
-            given to you to solve the cipher Task 3 - Navigate through our NC
-            Maze! Each challenge will give you a code that you need to input to
-            progress!
-          </p>
+          <div className="type-section">
+            <Welcome />
+          </div>
+          <div className="button-section"></div>
         </div>
         <Link to='/cypher'>Start Challenge</Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default IntroPage;
+export default IntroPage
