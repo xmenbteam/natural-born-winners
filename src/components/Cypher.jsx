@@ -6,7 +6,6 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import party from 'party-js';
 import TypeWriterEffect from 'react-typewriter-effect'
 import { AppContext } from '../AppContext';
-import StageButton from '../components/StageButton'
 
 function Card({ text, index, setCurrentDrag }) {
   const [{ isDragging }, dragRef] = useDrag(() => {
