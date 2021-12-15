@@ -1,19 +1,19 @@
-import React, { useState, useContext } from "react";
-import { AppContext } from "../AppContext";
-import { collection, addDoc } from "firebase/firestore";
-import db from "../firebase/firebase";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useContext } from "react"
+import { AppContext } from "../AppContext"
+import { collection, addDoc } from "firebase/firestore"
+import db from "../firebase/firebase"
+import { Link, useNavigate } from "react-router-dom"
 
-import NCLogoRed from "../assets/NCLogoRed.png";
+import NCLogoRed from "../assets/NCLogoRed.png"
 
 const Login = () => {
-  const [localUsername, setLocalUsername] = useState("");
-  const [localCompany, setLocalCompany] = useState("");
-  const [localEmail, setLocalEmail] = useState("");
+  const [localUsername, setLocalUsername] = useState("")
+  const [localCompany, setLocalCompany] = useState("")
+  const [localEmail, setLocalEmail] = useState("")
 
-  const { dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext)
 
-  let navigate = useNavigate();
+  let navigate = useNavigate()
 
   return (
     <>
@@ -24,7 +24,7 @@ const Login = () => {
           placeholder="Username"
           className="form-input"
           onChange={(event) => {
-            setLocalUsername(event.target.value);
+            setLocalUsername(event.target.value)
           }}
           value={localUsername}
         />
@@ -33,7 +33,7 @@ const Login = () => {
           placeholder="Company"
           className="form-input"
           onChange={(event) => {
-            setLocalCompany(event.target.value);
+            setLocalCompany(event.target.value)
           }}
           value={localCompany}
         />
@@ -42,7 +42,7 @@ const Login = () => {
           placeholder="Email"
           className="form-input"
           onChange={(event) => {
-            setLocalEmail(event.target.value);
+            setLocalEmail(event.target.value)
           }}
           value={localEmail}
         />
@@ -50,13 +50,13 @@ const Login = () => {
           <button
             type="submit"
             onClick={async (event) => {
-              event.preventDefault();
+              event.preventDefault()
               await addDoc(collection(db, "users"), {
                 username: localUsername,
                 company: localCompany,
                 email: localEmail,
                 startTime: Date.now(),
-              });
+              })
               dispatch({
                 type: "submit",
                 value: {
@@ -65,8 +65,8 @@ const Login = () => {
                   email: localEmail,
                   startTime: Date.now(),
                 },
-              });
-              navigate("/intro");
+              })
+              navigate("/games/intro")
             }}
             className="enter-button"
           >
@@ -75,7 +75,7 @@ const Login = () => {
         </Link>
       </form>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
