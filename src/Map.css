@@ -1,0 +1,18 @@
+.map ul {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+.map li {
+  list-style-type: none;
+  width: 10px;
+}
+
+.split {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.instructions {
+  margin-left: 50px;
+}
