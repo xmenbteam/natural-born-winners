@@ -1,16 +1,20 @@
 import { useContext } from "react"
-import { Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { AppContext } from "../AppContext"
 
+import Cypher from "./Cypher"
 import Welcome from "./Welcome"
+import Game from "./Game"
 import StageButton from "./StageButton"
 
 import pixelComputer from "../assets/pixelComp.png"
 
-const Console = () => {
+const Console = (props) => {
   const { state } = useContext(AppContext)
   const { username } = state
+  const { game } = useParams()
 
+  console.log(game)
   return (
     <div className="content-wrapper">
       <div className="inner-wrapper">
@@ -23,8 +27,11 @@ const Console = () => {
         </div>
         <div className="instructions-content">
           <div className="type-section">
-            <Welcome />
+            {game === "intro" && <Welcome />}
+            {game === "cypher" && <Cypher phraseToGuess="HOWDY!" />}
+            {game === "maze" && <Game />}
           </div>
+
           <div className="button-section">
             <StageButton taskNum="1" />
             <StageButton taskNum="2" />
