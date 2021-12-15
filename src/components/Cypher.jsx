@@ -1,8 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useDrag, useDrop } from "react-dnd";
 import cypher from '../utils/cypher';
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
+import party from 'party-js';
+import TypeWriterEffect from 'react-typewriter-effect'
+import { AppContext } from '../AppContext';
+import StageButton from '../components/StageButton'
 
 function Card({ text, index, setCurrentDrag }) {
   const [{ isDragging }, dragRef] = useDrag(() => {
@@ -53,16 +57,13 @@ function Box({ card, moveCard, phrase, setCurrentDrag  }) {
 }
 
 function Cypher({ phraseToGuess }) {
+  const {state} = useContext(AppContext)
+  const {phrases} = state
   const [currentDrag, setCurrentDrag] = useState(null);
   const [currentDragTarget, setCurrentDragTarget] = useState(null);
   const [guess, setGuess] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  const phrases = [
-    "HOWDY!",
-    "PUPPY!",
-    "BEANS!"
-  ];
 
   useEffect(() => {
     const guess = phrases[currentDrag - 1];
@@ -77,13 +78,41 @@ function Cypher({ phraseToGuess }) {
   return (
     <div>
     <DndProvider backend={HTML5Backend}>
-      <h1>Decode the this message... {cypher(phraseToGuess)}</h1>
-      <h2>Drag your chosen answer to the blank square below</h2>
-      <br></br>
+      <TypeWriterEffect
+        textStyle={{ fontFamily: "Orbitron" }}
+        startDelay={100}
+        cursorColor="black"
+        text={`Decode the the message... ${cypher(phraseToGuess)} using these clues: i = v, k = x `}
+        typeSpeed={40}
+      />
+      <TypeWriterEffect
+        textStyle={{ fontFamily: "Orbitron" }}
+        startDelay={4000}
+        cursorColor="black"
+        text={`Drag your chosen answer to the blank square below`}
+        typeSpeed={40}
+      />
       <br></br>
 
       {success && (
-        <h3>Well done!</h3>
+        
+        <div
+            className='confetti-button'
+            onMouseMove={(event) => {
+              party.confetti(event.target, {
+                count: party.variation.range(20, 40)
+              });
+              party.confetti(event.target, {
+                count: party.variation.range(10, 50)
+              });
+              party.confetti(event.target, {
+                count: party.variation.range(20, 40)
+              });
+            }}
+          >
+          <h3>Well done!</h3>
+          </div>
+          
       )}
 
       <section className="target">

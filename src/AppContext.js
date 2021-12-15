@@ -19,7 +19,12 @@ export const initialState = {
   passcode1: null,
   passcode2: null,
   passcode3: null,
-  currentStage: 0
+  currentStage: 0,
+  phrases: [
+    "HOWDY!",
+    "PUPPY!",
+    "BEANS!"
+  ]
 };
 
 export const AppContext = createContext();
